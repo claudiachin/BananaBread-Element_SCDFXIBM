@@ -1,10 +1,20 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+#element {
+  font-size: 28px;
+  font-family: Oswald;
+  color: #053b5c;
+  padding: 10px 20px;
+  margin: 0px;
+}
+
+.Map {
   width: 60%;
-  padding: 10px;
+  padding: 1%;
   overflow: hidden;
 }
 
-.App img {
+.Map img {
   position: relative;
 }
 
@@ -24,4 +34,9 @@
   fill:#b53737;
   stroke:#fff;
   stroke-miterlimit:10;
+}
+
+.Info {
+  width: 38%;
+  float: right;
 }
