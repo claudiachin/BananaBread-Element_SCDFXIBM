@@ -5,7 +5,7 @@ let dotenv = require("dotenv");
 dotenv.config();
 
 let admin = require("firebase-admin");
-let service_account = require("./service_account_key.json");
+let service_account = require(process.env.PATH_TO_SERVICE_ACCOUNT);
 
 admin.initializeApp({
   credential: admin.credential.cert(service_account),
@@ -23,36 +23,18 @@ app.listen(port, () => {
 });
 
 const DUMMY_DEVICE_LOCATION_MAP = {
-  'Sensor_1': 'A',
-  'Sensor_2': 'B',
-  'Sensor_3': 'C',
-  'Sensor_4': 'D',
-  'Sensor_5': 'E',
-  'Sensor_6': 'F'
-}
+  Sensor_1: "A",
+  Sensor_2: "B",
+  Sensor_3: "C",
+  Sensor_4: "D",
+  Sensor_5: "E",
+  Sensor_6: "F",
+};
 
 // ROUTES
 
 app.get("/", (req, res) => {
   res.json("testing");
-});
-
-app.get("/get-access-token", async (req, res) => {
-  try {
-    const token_response = await superagent
-      .post("https://iam.cloud.ibm.com/identity/token")
-      .set("Content-Type", "application/x-www-form-urlencoded")
-      .set("Accept", "application/json")
-      .send({
-        grant_type: "urn:ibm:params:oauth:grant-type:apikey",
-        apikey: process.env.IBM_CLOUD_KEY,
-      });
-    // const { access_token, refresh_token } = token_response.body;
-    res.json("obtained access token");
-  } catch (err) {
-    console.error(err);
-    res.json("error");
-  }
 });
 
 app.get("/get-data", async (req, res) => {
@@ -85,15 +67,27 @@ app.get("/get-data", async (req, res) => {
             `${process.env.YIFEI_IOT_KEY}:${process.env.YIFEI_IOT_TOKEN}`
           ).toString("base64")}`
         );
-      const humidity = JSON.parse(Buffer.from(data_response.body.find(event => event.eventId === 'Humidity').payload, "base64").toString()).randomNumber;
-      const temperature = JSON.parse(Buffer.from(data_response.body.find(event => event.eventId === 'Temperature').payload, "base64").toString()).randomNumber;
+      const humidity = JSON.parse(
+        Buffer.from(
+          data_response.body.find((event) => event.eventId === "Humidity")
+            .payload,
+          "base64"
+        ).toString()
+      ).randomNumber;
+      const temperature = JSON.parse(
+        Buffer.from(
+          data_response.body.find((event) => event.eventId === "Temperature")
+            .payload,
+          "base64"
+        ).toString()
+      ).randomNumber;
       const data = {
         humidity: humidity,
         temperature: temperature,
         id: device.deviceId,
-        location: DUMMY_DEVICE_LOCATION_MAP[device.deviceId]
-    };
-      const doc_ref = db.collection('SensorReading').doc(Date.now().toString());
+        location: DUMMY_DEVICE_LOCATION_MAP[device.deviceId],
+      };
+      const doc_ref = db.collection("SensorReading").doc(Date.now().toString());
       doc_ref.set(data);
       all_device_data.push(data);
     }

@@ -11,17 +11,15 @@ class Info extends React.Component {
   constructor(props) {
     super(props);
     this.intervalID = '';
-    this.state = {section: this.props.section};
   }
 
   handleColour() {
-    console.log(this.state.section[this.props.id].humidity);
-    let humidity = this.state.section[this.props.id].humidity;
-    let temperature = this.state.section[this.props.id].temperature;
+    let humidity = this.props.section[this.props.id].humidity;
+    let temperature = this.props.section[this.props.id].temperature;
 
-    if (humidity >= 80 && temperature >=35) {
+    if (humidity <= 75 && temperature >=35) {
       return '#e94b3cff';
-    } else if (humidity >= 75 && temperature >= 33) {
+    } else if (humidity >= 75 && humidity <= 80 && temperature >= 33) {
       return '#ffd300';
     } else {
       return '#8bbf41';
@@ -30,12 +28,12 @@ class Info extends React.Component {
   
 
   handleFireDangerLevel() {
-    let humidity = this.state.section[this.props.id].humidity;
-    let temperature = this.state.section[this.props.id].temperature;
+    let humidity = this.props.section[this.props.id].humidity;
+    let temperature = this.props.section[this.props.id].temperature;
 
-    if (humidity >= 80 && temperature >=35) {
+    if (humidity <= 75 && temperature >=35) {
       return 'High';
-    } else if (humidity >= 75 && temperature >= 33) {
+    } else if (humidity >= 75 && humidity <= 80 && temperature >= 33) {
       return 'Medium';
     } else {
       return 'Low';
@@ -46,10 +44,10 @@ class Info extends React.Component {
     return (
       <div className='Info'>
         <div className='InfoSquare' style={{backgroundColor: this.handleColour()}}>
-          <p id="areaName">Area Name: {this.props.section[this.props.id].location}</p>
+          <p id="areaName"><b>Area Name: {this.props.section[this.props.id].location}</b></p>
           <p>Humidity: {this.props.section[this.props.id].humidity}%</p>
           <p>Temperature: {this.props.section[this.props.id].temperature}&deg;C</p>
-          <p id="likeliness">Likeliness of fire: {this.handleFireDangerLevel()}</p>
+          <p id="likeliness"><b>Likeliness of fire: {this.handleFireDangerLevel()}</b></p>
         </div>
       </div>
     );
@@ -63,11 +61,12 @@ class App extends React.Component {
     this.handleColour = this.handleColour.bind(this);
     this.state = {id: 2, section: []}
     this.intervalID = '';
+    this.hackCount = 0;
   }
 
   componentDidMount() {
     this.getData();
-    this.intervalID = setInterval(this.getData.bind(this), 60000);
+    this.intervalID = setInterval(this.getData.bind(this), 60000);  
   }
 
   async getData() {
@@ -75,7 +74,6 @@ class App extends React.Component {
     const response = await fetch(url);
     const data  = await response.json();
     this.setState({section: data});
-    console.log('update')
   }
 
   componentWillUnmount() {
@@ -87,9 +85,9 @@ class App extends React.Component {
     let temperature = this.state.section[id].temperature;
 
     let fill = '';
-    if (humidity >= 80 && temperature >=35) {
+    if (humidity <= 75 && temperature >=35) {
       fill = 'danger';
-    } else if (humidity >= 75 && temperature >= 33) {
+    } else if (humidity >= 75 && humidity <= 80 && temperature >= 33) {
       fill = 'alert';
     } else {
       fill = 'normal';
@@ -102,8 +100,6 @@ class App extends React.Component {
   }
 
   render() {
-    let info = ''
-    // if this.state.proceed 
     if (this.state.section.length > 0) {
       return (
         <div>
