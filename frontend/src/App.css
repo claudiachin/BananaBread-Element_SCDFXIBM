@@ -31,12 +31,31 @@
 }
 
 .danger > path, .danger polygon {
-  fill:#b53737;
+  fill:#e94b3cff;
   stroke:#fff;
   stroke-miterlimit:10;
 }
 
 .Info {
-  width: 38%;
+  width: 34%;
   float: right;
+  padding: 2% 4% 2% 0%;
+}
+
+.InfoSquare {
+  border-radius: 25px;
+  padding: 2% 0%;
+}
+
+.InfoSquare {
+  padding: 5px 20px;
+}
+
+.InfoSquare #areaName {
+  font-size: 20px;
+}
+
+.InfoSquare #likeliness {
+  font-size: 18px;
+  border-radius: 25px;
 }
