@@ -1,69 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# BANANA BREAD
+## ELEMENT
+In recent years, vegetation fires in Singapore has contributed to a significant percentage of all fires in the country, making up 30.9% of all fires in 2019. According to news articles, the Wildfire Task Force Committee has taken preventive measures to minimise vegetation fire by trimming vegetation, watering dry areas and conducting patrols at hot spots. However, there is little detail as to how this is carried out, leading to our team deciding that the use of technology and the Internet of things will be able to help optimise the effciency and effectiveness of these measures.
 
-## Available Scripts
+Element is a mobile application that we have created which makes use of data collected from humidity and temperature sensors to indicate whether or not a certain location is in urgent need of watering. By relying on real time data collection, we believe that Element can ensure that dry areas are promptly taken care of and that no precious time and human resources will not be wasted on checking on the conditions of the entire plot of vegetation. 
 
-In the project directory, you can run:
+### Implementation of Code
+The user interface was created using React. Due to limitations in time, our team decided to demonstrate the functionalities of the application using a web app scaled down to the size of a mobile phone instead of developing a mobile application. 
 
-### `npm start`
+The back end of this mobile application uses Node.js and the Internet of Things Platform from IBM Cloud and is deployed using Heroku. For this demonstration, our team created simulation devices using the IOT Platform and used the IOT Platform API to send the device data to our mobile application. This data was also stored in Firebase for possible future use and analysis. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### How to Run
+The React app can be run with the command `npm run`. Before running the app, use the command `npm install` to obtain the necessary dependencies.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-"# BananaBread-Element_SCDFXIBM" 
+The Node.js server is accessible with the base URL of https://damp-journey-05387.herokuapp.com. To run it locally, first execute an `npm install` command to obtain the necessary dependencies. A `.env` file must also be created and populated with the necessary port numbers and API keys and tokens. 
