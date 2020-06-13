@@ -18,12 +18,12 @@ class Info extends React.Component {
     };
   }
 
-  async componentDidMount() {
-    const url = "https://damp-journey-05387.herokuapp.com/get-data";
-    const response = await fetch(url);
-    const data  = await response.json();
-    this.setState({section: data});
-  }
+  // async componentDidMount() {
+  //   const url = "https://damp-journey-05387.herokuapp.com/get-data";
+  //   const response = await fetch(url);
+  //   const data  = await response.json();
+  //   this.setState({section: data});
+  // }
 
   handleFireDangerLevel() {
     let humidity = this.state.section[this.props.id].humidity;
@@ -39,14 +39,12 @@ class Info extends React.Component {
   }
 
   render() {
-    console.log(this.state.section[this.props.id])
     return (
       <div className='Info'>
           <div>
-            <p className={"Appinfo"}>Area Name: {this.state.section[this.props.id].location}</p>
-            <p className={"Appinfo"}>Area Name: {this.state.section.location}</p>
-            <p className={"Appinfo"}>Humidity: {this.state.section.humidity}%</p>
-            <p className={"Appinfo"}>Temperature: {this.state.section.temperature}&deg;C</p>
+            <p className={"Appinfo"}>Area Name: {this.props.section[this.props.id].location}</p>
+            <p className={"Appinfo"}>Humidity: {this.props.section[this.props.id].humidity}%</p>
+            <p className={"Appinfo"}>Temperature: {this.props.section[this.props.id].temperature}&deg;C</p>
             <p className={"Appinfo"}>Likeliness of fire: {this.state.fire}</p>
           </div>
       </div>
@@ -58,6 +56,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleColour = this.handleColour.bind(this);
     this.state = {id: 2, section: []}
   }
 
@@ -90,23 +89,29 @@ class App extends React.Component {
 
   render() {
     let info = ''
-    if this.state.proceed 
+    // if this.state.proceed 
+    if (this.state.section.length)
     return (
       <div>
         <header style={{height:window.innerHeight*0.1+'px'}}><p id='element'>ELEMENT</p></header>
         <div style={{display:'float'}}>
           <div className="Map" style={{height:window.innerHeight*0.8+'px', float:'left'}}>
-            <A onClick={this.handleClick.bind(this, 2)} className={this.handleColour.bind(this, 2)} style={{position:'relative',transform:'scale(0.3)',top:-140+'px',left:-25+'px'}}/>
-            <B onClick={this.handleClick.bind(this, 3)} className={this.handleColour.bind(this, 3)} style={{position:'relative',transform:'scale(0.33)',top:-482+'px',left:-138+'px'}}/>
-            <C onClick={this.handleClick.bind(this, 4)} className={this.handleColour.bind(this, 4)} style={{position:'relative',transform:'scale(0.48)',top:-838+'px',left:42+'px'}}/>
-            <D onClick={this.handleClick.bind(this, 5)} className={this.handleColour.bind(this, 5)} style={{position:'relative',transform:'scale(0.2)',top:-1201+'px',left:101+'px'}}/>
-            <E onClick={this.handleClick.bind(this, 0)} className={this.handleColour.bind(this, 0)} style={{position:'relative',transform:'scale(0.37)',top:-1458+'px',left:136+'px'}}/>
-            <F onClick={this.handleClick.bind(this, 1)} className={this.handleColour.bind(this, 1)} style={{position:'relative',transform:'scale(0.3)',top:-1635+'px',left:83+'px'}}/>
+            <A onClick={this.handleClick.bind(this, 2)} className={this.handleColour(2)} style={{position:'relative',transform:'scale(0.3)',top:-140+'px',left:-25+'px'}}/>
+            <B onClick={this.handleClick.bind(this, 3)} className={this.handleColour(3)} style={{position:'relative',transform:'scale(0.33)',top:-482+'px',left:-138+'px'}}/>
+            <C onClick={this.handleClick.bind(this, 4)} className={this.handleColour(4)} style={{position:'relative',transform:'scale(0.48)',top:-838+'px',left:42+'px'}}/>
+            <D onClick={this.handleClick.bind(this, 5)} className={this.handleColour(5)} style={{position:'relative',transform:'scale(0.2)',top:-1201+'px',left:101+'px'}}/>
+            <E onClick={this.handleClick.bind(this, 0)} className={this.handleColour(0)} style={{position:'relative',transform:'scale(0.37)',top:-1458+'px',left:136+'px'}}/>
+            <F onClick={this.handleClick.bind(this, 1)} className={this.handleColour(1)} style={{position:'relative',transform:'scale(0.3)',top:-1635+'px',left:83+'px'}}/>
           </div>
-          <Info id={this.state.id}/>
+          <Info id={this.state.id} section={this.state.section} />
         </div>
       </div>
     );
+    return (
+      <div>
+        Loading...
+      </div>
+    )
   }
 }
 
