@@ -1,0 +1,27 @@
+.App {
+  width: 60%;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.App img {
+  position: relative;
+}
+
+.normal > path, .normal polygon {
+  fill:#8bbf41;
+  stroke:#fff;
+  stroke-miterlimit:10;
+}
+
+.alert > path, .alert polygon {
+  fill:#ffd300;
+  stroke:#fff;
+  stroke-miterlimit:10;
+}
+
+.danger > path, .danger polygon {
+  fill:#b53737;
+  stroke:#fff;
+  stroke-miterlimit:10;
+}
