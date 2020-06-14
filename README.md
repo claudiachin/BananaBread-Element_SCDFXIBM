@@ -24,5 +24,5 @@ The Node.js server is accessible with the base URL of https://damp-journey-05387
 ### About Team Banana Bread
 + Claudia Chin - Freshmore student @ SUTD, claudia_chin@mymail.sutd.edu.sg
 + Tan Xin Yi - Freshmore student @ SUTD, xinyi_tan@mymail.sutd.edu.sg
-+ Zoey Ong - 1st Year student @ NTU, TO ADD IN
++ Zoey Ong - 1st Year student @ NTU, zoeyong13@gmail.com
 + Phang Yi Fei - 1st Year student @ NTU, YPHANG003@e.ntu.edu.sg
