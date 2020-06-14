@@ -7,8 +7,8 @@ In recent years, vegetation fires in Singapore has contributed to a significant 
 Element is a mobile application that we have created which makes use of data collected from humidity and temperature sensors to indicate whether or not a certain location is in urgent need of watering. By relying on real time data collection, we believe that Element can ensure that dry areas are promptly taken care of and that no precious time and human resources will not be wasted on checking on the conditions of the entire plot of vegetation. 
 
 ### Pitch Video
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=9fBkUHtW_Y8
-" target="_blank"><img src="http://img.youtube.com/vi/9fBkUHtW_Y8/0.jpg" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=cOHmEtXC_5c
+" target="_blank"><img src="http://img.youtube.com/vi/cOHmEtXC_5c/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ### Implementation of Code
